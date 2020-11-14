@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wind.mapper.SyncDataMapper">
+
+    <insert id ="insertSelective">
+        INSERT INTO jc_sjs ( code, short_name, titile, notice_time ) VALUES(#{code}, #{shortName}, #{titile}, #{noticeTime} )
+    </insert>
+
+    <select id="selectByOption" resultType="com.wind.entity.SyncData">
+        SELECT id,code,short_name,titile,notice_time FROM jc_sjs WHERE code = #{code} AND titile = #{titile} LIMIT 1;
+    </select>
+
+    <insert id ="insertErrorSelective">
+        INSERT INTO jc_sjs ( code, short_name, titile, notice_time ,error ) VALUES(#{code}, #{shortName}, #{titile}, #{noticeTime},#{error} )
+    </insert>
+
+    <select id="selectErrorByOption" resultType="com.wind.entity.SyncData">
+        SELECT id,code,short_name,titile,notice_time,error FROM jc_sjs WHERE code = #{code} AND titile = #{titile} LIMIT 1;
+    </select>
+</mapper>
